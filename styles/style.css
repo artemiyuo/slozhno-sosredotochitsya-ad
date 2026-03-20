@@ -22,7 +22,7 @@
 
 .decorativeZone {
   height: 100vh;
-  min-height: 668px;
+  min-height: 670px;
   position: relative;
 }
 
@@ -47,3 +47,107 @@
   border-block-start: 1px solid var(--button-color);
   border-inline-end: 1px solid var(--button-color);
 }
+
+.themeMenu {
+  justify-self: end;
+}
+
+.themeMenuList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.themeMenuButton {
+  color: var(--button-color);
+  padding: 1.5px 13px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.themeMenuButton:hover {
+  outline: 1px solid var(--button-hover-border);
+}
+
+.themeMenuButton:focus {
+  outline: none;
+}
+
+.themeMenuButton:focus-visible {
+  border-bottom: 1px solid var(--button-color);
+}
+
+.themeMenuButtonActive {
+  outline: 1px solid var(--button-color);
+  pointer-events: none;
+}
+
+.headerDescription {
+  justify-self: end;
+  align-self: center;
+  width: 100%;
+}
+
+.headlineTitle {
+  color: var(--main-header-color);
+  font-size: clamp(7.25rem, 7.0115rem + 1.0178vw, 7.5rem);
+  line-height: 80%;
+  font-weight: 700;
+}
+
+.shadowedTitle {
+  text-shadow: 4px 4px 0 var(--shadow-color);
+}
+
+.recordMarker {
+  position: absolute;
+  display: var(--rec-type);
+  color: var(--button-color);
+  text-transform: uppercase;
+  inset-block-start: var(--main-padding);
+  inset-inline-end: calc(var(--main-padding) + 28px);
+}
+
+.recordMarker::after {
+  content: "";
+  position: absolute;
+  display: var(--rec-type);
+  block-size: 9px;
+  inline-size: 9px;
+  border-radius: 50%;
+  box-shadow: 0px 0px 4px 2px var(--button-color);
+  background-color: var(--button-color);
+  inset-inline-end: -18px;
+  inset-block-start: 10px;
+}
+
+.sectionGrid {
+  display: grid;
+  gap: 20px;
+}
+
+.contentGrid {
+  display: grid;
+  gap: var(--sections-gap);
+  padding: var(--main-content-vertical-padding) var(--main-padding);
+}
+
+.sectionTitle {
+  color: var(--section-header-color);
+  font-size: var(--main-font-size);
+  font-weight: 700;
+  line-height: var(--main-line-height);
+}
+
+.sectionCardList {
+  display: grid;
+  gap: 20px;
+}
+
+.cardItem {
+  display: grid;
+  gap: 10px;
+  align-items: start;
+}
+
