@@ -22,7 +22,7 @@
 
 .decorativeZone {
   height: 100vh;
-  min-height: 670px;
+  min-height: 668px;
   position: relative;
 }
 
@@ -83,21 +83,21 @@
   pointer-events: none;
 }
 
-.headerDescription {
-  justify-self: end;
-  align-self: center;
-  width: 100%;
-}
-
 .headlineTitle {
   color: var(--main-header-color);
   font-size: clamp(7.25rem, 7.0115rem + 1.0178vw, 7.5rem);
-  line-height: 80%;
+  line-height: 82.5%;
   font-weight: 700;
 }
 
 .shadowedTitle {
   text-shadow: 4px 4px 0 var(--shadow-color);
+}
+
+.headerDescription {
+  justify-self: end;
+  align-self: center;
+  width: 100%;
 }
 
 .recordMarker {
@@ -119,18 +119,18 @@
   box-shadow: 0px 0px 4px 2px var(--button-color);
   background-color: var(--button-color);
   inset-inline-end: -18px;
-  inset-block-start: 10px;
-}
-
-.sectionGrid {
-  display: grid;
-  gap: 20px;
+  inset-block-start: 9px;
 }
 
 .contentGrid {
   display: grid;
   gap: var(--sections-gap);
   padding: var(--main-content-vertical-padding) var(--main-padding);
+}
+
+.sectionGrid {
+  display: grid;
+  gap: 20px;
 }
 
 .sectionTitle {
@@ -213,7 +213,7 @@
   text-shadow: 2px 2px 0 var(--shadow-color);
 }
 
-@media (width >= 765px) {
+@media (width >= 768px) {
   :root {
     --main-padding: 20px;
     --main-content-vertical-padding: 60px;
@@ -239,7 +239,7 @@
   }
 
   .headlineTitle {
-    font-size: clamp(7.5rem, 0.57rem + 14.5vw, 9.8rem);
+    font-size: clamp(7.5rem, 0.5625rem + 14.4531vw, 9.8125rem);
   }
 
   .headerDescription {
@@ -264,7 +264,7 @@
   }
 }
 
-@media (width >= 1025px) {
+@media (width >= 1024px) {
   .secondarySection .sectionCardList {
     grid-template-columns: repeat(3, 1fr);
     align-items: start;
