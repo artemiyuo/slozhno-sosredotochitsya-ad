@@ -8,7 +8,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   const currentTheme = [...document.documentElement.classList]
     .find((cn) => cn.startsWith('theme-'))
-    ?.replace('theme-', '');
+    ?.replace('theme-', '') || 'auto';
 
   const themeButtons = [
     ...document.querySelectorAll('.themeMenuButton'),
@@ -30,9 +30,20 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function setTheme(theme) {
-  document.documentElement.className = '';
-  document.documentElement.classList.add(`theme-${theme}`);
-  localStorage.setItem('theme', theme);
+  // Удаляем все классы, начинающиеся с theme-
+  const classes = document.documentElement.classList;
+  [...classes].forEach(cls => {
+    if (cls.startsWith('theme-')) {
+      classes.remove(cls);
+    }
+  });
+
+  if (theme !== 'auto') {
+    classes.add(`theme-${theme}`);
+    localStorage.setItem('theme', theme);
+  } else {
+    localStorage.removeItem('theme');
+  }
 }
 
 function setActiveButton(buttonsArray, theme) {
@@ -41,23 +52,22 @@ function setActiveButton(buttonsArray, theme) {
     button.removeAttribute('disabled');
   });
 
-  const themeCapitalized =
-    theme.charAt(0).toUpperCase() + theme.slice(1);
+  if (theme === 'auto') {
+    const autoButton = document.querySelector('.themeMenuButtonTypeAuto');
+    if (autoButton) {
+      autoButton.classList.add('themeMenuButtonActive');
+      autoButton.setAttribute('disabled', true);
+    }
+    return;
+  }
 
+  const themeCapitalized = theme.charAt(0).toUpperCase() + theme.slice(1);
   const target = buttonsArray.find((button) =>
-    button.classList.contains(
-      `themeMenuButtonType${themeCapitalized}`
-    )
+    button.classList.contains(`themeMenuButtonType${themeCapitalized}`)
   );
 
   if (target) {
     target.classList.add('themeMenuButtonActive');
     target.setAttribute('disabled', true);
-  } else {
-    const autoButton = document.querySelector(
-      '.themeMenuButtonTypeAuto'
-    );
-    autoButton.classList.add('themeMenuButtonActive');
-    autoButton.setAttribute('disabled', true);
   }
 }
